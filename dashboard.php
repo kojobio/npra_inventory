@@ -14,10 +14,10 @@ session_start();
 </head>
 <body>
 
-    <header>
+    <!-- <header>
         <h1>WELCOME $USER_ID</h1>
     </header>
-
+-->
     <nav>
         <a href="dashboard.php" >Home</a>
         <a href="maintenance.php" >Maintenance</a>
