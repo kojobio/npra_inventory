@@ -17,7 +17,8 @@ session_start();
     <!-- <header>
         <h1>WELCOME $USER_ID</h1>
     </header>
--->
+    -->
+
     <nav>
         <a href="dashboard.php" >Home</a>
         <a href="maintenance.php" >Maintenance</a>
@@ -29,7 +30,7 @@ session_start();
 
     <section id="home">
         <h2>Home Section</h2>
-        <!--we muive -->
+        we muive
     </section>
 </body>
 </html>
