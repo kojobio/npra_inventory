@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (isset($_POST["staffId"]) && isset($_POST["password"]) && isset($_POST["role"])) {
     $STAFF_ID = $_POST["staffId"];
     $pwd = $_POST["password"];
@@ -11,7 +11,7 @@ if (isset($_POST["staffId"]) && isset($_POST["password"]) && isset($_POST["role"
         //  placeholders and binding parameters
         $query = "SELECT * FROM users WHERE STAFF_ID= :STAFF_ID AND pwd= :pwd AND user_role= :user_role";
         $stmt = $pdo->prepare($query);
-        
+
         // Binding parameters
         $stmt->bindParam(':STAFF_ID', $STAFF_ID);
         $stmt->bindParam(':pwd', $pwd);
@@ -21,12 +21,14 @@ if (isset($_POST["staffId"]) && isset($_POST["password"]) && isset($_POST["role"
 
         // Check if a row is found
         if ($stmt->rowCount() > 0) {
-            header("location: ../dashboard.php");
+
+            $_SESSION['STAFF_ID'] = $STAFF_ID;
+
+            header("location: ../here.php");
             exit(); // Use exit() instead of die() after a header("location: ...") redirect
         } else {
             echo "Invalid credentials"; // login failure
         }
-
     } catch (PDOException $e) {
         die("Query Failed: " . $e->getMessage());
     } finally {
